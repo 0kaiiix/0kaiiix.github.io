@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <!-- Meta 標籤設定 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>林楷程 | 臺灣科技大學企管系</title>
+  
+  <!-- 外部資源引入 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="certificates.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <!-- 頁面結構開始 -->
+  
+  <!-- 1. 導覽列區塊 - 包含 Logo、選單和深色模式切換 -->
+  <header class="navbar">
+    <div class="container">
+        <h1 class="logo"><i class="fas fa-laptop-code"></i> 我的作品集</h1>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero" class="active"><i class="fas fa-home"></i> 首頁</a></li>
+                    <li><a href="#about"><i class="fas fa-user"></i> 關於我</a></li>
+                    <li><a href="#skills"><i class="fas fa-chart-bar"></i> 技能</a></li>
+                    <li><a href="#projects"><i class="fas fa-briefcase"></i> 作品</a></li>
+                    <li><a href="#contact"><i class="fas fa-envelope"></i> 聯絡我</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+  <!-- 2. 個人介紹區塊 - 包含個人照片和簡短介紹 -->
+  <section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-image">
+          <img src="pp.jpg" alt="個人照片">
+        </div>
+        <div class="hero-text">
+          <h1 class="hero__title">Hi!I'm Kaiiix <span class="highlight">林楷程</span></h1>
+          <p class="hero__subtitle">擁有企業管理背景與多元跨域學習經驗的科技大學生，具備財務、行銷與人資等基礎能力，並取得多項專業證照。熟悉 Excel、PowerPoint 與 Canva 等工具，能獨立完成資料分析與視覺簡報設計，亦擅長團隊協作與創意思考。具備高度自我管理能力與學習熱忱，期待運用專長於實務職場中，持續成長與創新。</p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">查看作品</a>
+            <a href="#contact" class="btn btn-secondary">聯絡我</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 關於我區塊 - 包含個人簡介和學歷經歷 -->
+  <section id="about" class="about section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-user-circle"></i> 關於我</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p><i class="fas fa-quote-left quote-icon"></i> 我是就讀於國立臺灣科技大學企業管理系的大三學生，自 2022 年以來專注於企業經營與管理領域的學習，主修課程涵蓋人力資源管理、財務管理與行銷管理等，同時也選修了「生醫與香粧科技新知」的跨域微學程，培養跨領域整合的能力。 </p>
+          <p><i class="fas fa-lightbulb idea-icon"></i> 在技能方面，我擅長使用 Excel 進行資料整理與分析，並熟練運用 Word、PowerPoint 和 Canva 製作內部文件與簡報，提升溝通效率與專業形象。對於文件管理、流程規劃與細節把控也具備高度敏銳度。
+            在團隊合作經驗中，我常擔任小組的協調者與執行者，能有效統整意見、安排進度，並在需要時與師長或外部單位進行溝通聯繫，展現良好的責任感與應對能力。
+            未來我希望能朝行政助理或人資助理等方向發展，持續精進專業技能，並在實務中累積經驗，協助企業在行政效率與人力管理上持續優化。</p>
+        </div>
+        <div class="education">
+          <h2><i class="fas fa-graduation-cap"></i> 學歷</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3><i class="fas fa-university"></i> 國立臺灣科技大學 - 企業管理系</h3>
+                <p><i class="far fa-calendar-alt"></i> 2022 - Now</p>
+                <h4><i class="fas fa-book"></i> 主修課程：人力資源管理、財務管理、行銷管理等</h4>
+                <h4><i class="fas fa-flask"></i> 跨域修課：生醫與香粧科技新知跨域微學程</h4>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-content">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 專業證照區塊 -->
+  <section id="certificates" class="certificates section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-certificate"></i> 專業證照</h2>
+      
+      <!-- 辦公室與電腦應用 -->
+      <h3 class="cert-category-title"><i class="fas fa-desktop"></i> 辦公室與電腦應用</h3>
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>電腦軟體應用技術士</h3>
+            <p class="cert-level">乙級</p>
+            <p><i class="far fa-calendar-check"></i> 2022/02/17</p>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-file-excel"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>TQC-OA Excel</h3>
+            <p class="cert-level">專業級</p>
+            <p><i class="far fa-calendar-check"></i> 2021/01/29</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 財務與會計相關 -->
+      <h3 class="cert-category-title"><i class="fas fa-chart-line"></i> 會計與商管相關</h3>
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-calculator"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>會計事務技術士</h3>
+            <p class="cert-level">丙級</p>
+            <p><i class="far fa-calendar-check"></i> 2020/08/24</p>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-file-invoice-dollar"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>會計能力測驗合格證書</h3>
+            <p class="cert-level">一級</p>
+            <p><i class="far fa-calendar-check"></i> 2022/04/16</p>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>商管能力檢定合格證書</h3>
+            <p class="cert-level">二級</p>
+            <p><i class="far fa-calendar-check"></i> 2022/03/19</p>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-landmark"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>金融市場常識與職業道德</h3>
+            <p><i class="far fa-calendar-check"></i> 2025/03/15</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 其他證照 -->
+      <h3 class="cert-category-title"><i class="fas fa-star"></i> 其他證照</h3>
+      <div class="certificates-grid">
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fab fa-google"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>Google Ads 多媒體廣告</h3>
+            <p><i class="far fa-calendar-check"></i> 2024/07/07</p>
+          </div>
+        </div>
+
+        <div class="certificate-card">
+          <div class="certificate-icon">
+            <i class="fas fa-language"></i>
+          </div>
+          <div class="certificate-content">
+            <h3>商教會英文檢定</h3>
+            <p class="cert-level">三級</p>
+            <p><i class="far fa-calendar-check"></i> 2020/11/15</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 技能展示區塊 - 包含硬實力與軟實力技能評分 -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-cogs"></i> 技能專長</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3><i class="fas fa-laptop"></i> 硬實力</h3>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>Excel</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="90"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>PowerPoint</span>
+              <span>80%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="80"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>Word</span>
+              <span>85%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>Canva</span>
+              <span>95%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="95"></div>
+            </div>
+          </div>
+            <div class="skill-bar">
+              <div class="skill-info">
+                <span>SPSS</span>
+                <span>60%</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" data-level="60"></div>
+              </div>
+            </div>
+        </div>
+        <div class="skill-category">
+          <h3><i class="fas fa-brain"></i> 軟實力</h3>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>團隊合作與溝通</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="85"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>工作態度與管理</span>
+              <span>95%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="95"></div>
+            </div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-info">
+              <span>創意與思維</span>
+              <span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" data-level="85"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 作品集區塊 - 包含作品分類和展示 -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-project-diagram"></i> 精選作品</h2>
+      <div class="project-filter">
+        <button class="filter-btn active" data-filter="all"><i class="fas fa-th-large"></i> 全部</button>
+        <button class="filter-btn" data-filter="design"><i class="fas fa-paint-brush"></i> 設計</button>
+        <button class="filter-btn" data-filter="photo"><i class="fas fa-camera"></i> 照片</button>
+        <button class="filter-btn" data-filter="other"><i class="fas fa-ellipsis-h"></i> 其他</button>
+      </div>
+      <div class="portfolio-grid">
+        <!-- 作品會由JS動態載入 -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 作品輪播區塊 - 動態展示重點作品 -->
+  <section class="project-carousel section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-images"></i> 作品展示輪播</h2>
+      <div class="carousel-container">
+        <div class="carousel-slides">
+          <div class="slide active">
+            <img src="hr.png" alt="HR人才留任研究">
+            <div class="slide-info">
+              <h3>HR人才留任研究</h3>
+              <p>運用SPSS進行數據分析，探討影響員工留任的關鍵因素</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="印花.jpg" alt="花卉原民印花設計">
+            <div class="slide-info">
+              <h3>花卉原民印花設計</h3>
+              <p>結合台灣原住民文化與花卉元素的創新設計作品</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img src="green.png" alt="二手時尚集點APP">
+            <div class="slide-info">
+              <h3>二手時尚集點APP</h3>
+              <p>推廣永續時尚的創新集點獎勵系統設計</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 聯絡資訊區塊 - 包含聯絡表單和社群媒體連結 -->
+  <section id="contact" class="contact section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-paper-plane"></i> 聯絡我</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>kaila1021@gmail.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>0976-629-913</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>台灣，台北市</p>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/0kaiiix" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="姓名" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Email" required>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" placeholder="請輸入您的訊息" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> 送出訊息</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 頁尾區塊 - 包含版權資訊和返回頂部按鈕 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 kaiiix作品集. All Rights Reserved.</p>
+      <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- JavaScript 引入 -->
+  <script src="script.js"></script>
+</body>
+</html>
