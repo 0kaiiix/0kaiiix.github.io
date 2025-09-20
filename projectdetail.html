@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>專案詳細內容</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .project-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 40px;
+            align-items: start;
+            background-color: var(--bg-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-header {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        .project-image {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px var(--shadow-color);
+            position: sticky;
+            top: 20px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            border: 3px solid var(--color-accent);
+        }
+        
+        .project-image:hover {
+            transform: scale(1.02);
+        }
+
+        .project-info {
+            background: var(--bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            border-left: 4px solid var(--color-accent);
+        }
+
+        .project-description {
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+        
+        .project-description h2 {
+            color: var(--color-primary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--shadow-color);
+            font-size: 1.5rem;
+        }
+
+        .project-list {
+            margin: 0;
+            padding-left: 0;
+            line-height: 1.8;
+            list-style-type: none;
+        }
+        
+        .project-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+        
+        .project-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .project-tech {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: rgba(var(--color-accent-rgb), 0.1);
+            border-radius: 8px;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 15px 0 0;
+        }
+
+        .tech-item {
+            background: var(--color-accent);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .project-links {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: auto;
+            z-index: 1000;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            background: var(--color-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 3px 6px var(--shadow-color);
+            margin-left: 0;
+            letter-spacing: 0.5px;
+            justify-content: center;
+        }
+        
+        .project-link i {
+            margin-right: 8px;
+        }
+        
+        .project-link:hover {
+            background: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px var(--shadow-color);
+        }
+
+        @media (max-width: 768px) {
+            .project-detail {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .left-column {
+                margin-bottom: 20px;
+            }
+
+            .project-image {
+                position: static;
+                margin-bottom: 20px;
+                max-height: 300px;
+                object-fit: cover;
+            }
+
+            .project-title {
+                font-size: 2em;
+            }
+            
+            .project-info {
+                padding: 20px;
+            }
+            
+            .project-tech {
+                padding: 15px;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+                max-height: 80%;
+            }
+        }
+
+        .back-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent);
+            color: var(--color-light);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 8px var(--shadow-color);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-link:hover {
+            background: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px var(--shadow-color);
+        }
+
+        .back-link i {
+            font-size: 20px;
+        }
+        /* 圖片預覽模態框樣式 */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 37, 48, 0.9);
+            z-index: 1001;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .image-modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-container {
+            width: 90%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            border: 3px solid var(--color-accent);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+        }
+
+        #modalPdf {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .image-modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--color-light);
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-color: var(--color-accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background-color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+    <div class="container">
+        <h1 class="logo"><a href="index.html" style="text-decoration: none; color: inherit;"><i class="fas fa-laptop-code"></i> 我的作品集</a></h1>
+        <div class="nav-wrapper">
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html#hero" class="active"><i class="fas fa-home"></i> 首頁</a></li>
+                    <li><a href="index.html#about"><i class="fas fa-user"></i> 關於我</a></li>
+                    <li><a href="index.html#skills"><i class="fas fa-chart-bar"></i> 技能</a></li>
+                    <li><a href="index.html#projects"><i class="fas fa-briefcase"></i> 作品</a></li>
+                    <li><a href="index.html#contact"><i class="fas fa-envelope"></i> 聯絡我</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right">
+                <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div class="project-detail">
+        <div class="project-header">
+            <h1 class="project-title" id="projectTitle"></h1>
+            <p class="project-subtitle" id="projectDescription"></p>
+        </div>
+
+        <div class="left-column">
+            <img src="" alt="專案圖片" class="project-image" id="projectImage">
+            <div class="project-links">
+                <a href="" class="project-link preview-link" id="previewLink" target="_blank" style="margin-bottom: 10px;" onclick="startLipstickApp(event)">
+                    <i class="fas fa-eye"></i> 成果預覽
+                </a>
+                <div id="projectLinks"></div>
+            </div>
+            <script>
+            function startLipstickApp(event) {
+                const projectTitle = document.querySelector('.project-header h1').textContent;
+                if (projectTitle.includes('口紅試色')) {
+                    event.preventDefault();
+                    window.location.href = 'http://localhost:8502';
+                }
+            }
+            </script>
+        </div>
+
+        <div class="project-info">
+            <div class="project-description">
+                <h2>專案背景</h2>
+                <ul id="projectBackground" class="project-list"></ul>
+                
+                <h2>開發目標</h2>
+                <ul id="projectGoals" class="project-list"></ul>
+                
+                <h2>實現過程</h2>
+                <ul id="projectProcess" class="project-list"></ul>
+                
+                <h2>技術實現</h2>
+                <div class="project-tech">
+                    <ul class="tech-list" id="techList"></ul>
+                    <ul id="techDetails" class="project-list"></ul>
+                </div>
+                
+                <h2>成果展示</h2>
+                <ul id="projectResults" class="project-list"></ul>
+            </div>
+
+
+        </div>
+    </div>
+
+    <a href="javascript:history.back()" class="back-link" title="返回上一頁">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- 預覽模態框 -->
+    <div class="image-modal" id="imageModal">
+        <span class="close-modal" id="closeModal">&times;</span>
+        <div class="modal-container">
+            <img class="modal-content" id="modalImage" style="display: none;">
+            <iframe class="modal-content" id="modalPdf" style="display: none;"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // 預覽功能
+        const projectImage = document.getElementById('projectImage');
+        const imageModal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalPdf = document.getElementById('modalPdf');
+        const closeModal = document.getElementById('closeModal');
+
+        projectImage.addEventListener('click', () => {
+            const isPdf = projectImage.src.toLowerCase().endsWith('.pdf');
+            modalImage.style.display = !isPdf ? 'block' : 'none';
+            modalPdf.style.display = isPdf ? 'block' : 'none';
+            
+            if (!isPdf) {
+                modalImage.src = projectImage.src;
+            } else {
+                modalPdf.src = projectImage.src;
+            }
+            
+            imageModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeImageModal() {
+            imageModal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        imageModal.addEventListener('click', (e) => {
+            if (e.target === imageModal) {
+                closeImageModal();
+            }
+        });
+
+        closeModal.addEventListener('click', closeImageModal);
+
+        // 暗色模式切換邏輯
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const icon = darkModeToggle.querySelector('i');
+
+        // 從localStorage讀取主題設置
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            icon.className = currentTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        // 切換暗色模式
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? '' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // 從 localStorage 獲取專案資訊
+        const project = JSON.parse(localStorage.getItem('currentProject'));
+        
+        if (project) {
+            // 更新頁面標題
+            document.title = `${project.title} - 專案詳細內容`;
+            
+            // 填充專案資訊
+            document.getElementById('projectTitle').textContent = project.title;
+            document.getElementById('projectDescription').textContent = project.description;
+            document.getElementById('projectImage').src = project.image;
+            document.getElementById('projectImage').alt = project.title;
+            
+            // 填充專案詳細內容
+            // 專案背景
+            const backgroundList = document.getElementById('projectBackground');
+            if (project.background) {
+                const backgroundItems = project.background.split('。').filter(item => item.trim() !== '');
+                backgroundItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    backgroundList.appendChild(li);
+                });
+            }
+
+            // 開發目標
+            const goalsList = document.getElementById('projectGoals');
+            if (project.goals) {
+                const goalsItems = Array.isArray(project.goals) ? project.goals : project.goals.split('。').filter(item => item.trim() !== '');
+                goalsItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    goalsList.appendChild(li);
+                });
+            }
+
+            // 實現過程
+            const processList = document.getElementById('projectProcess');
+            if (project.process) {
+                const processItems = Array.isArray(project.process) ? project.process : project.process.split('。').filter(item => item.trim() !== '');
+                processItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    processList.appendChild(li);
+                });
+            }
+
+            // 技術實現
+            const techDetailsList = document.getElementById('techDetails');
+            if (project.techDetails) {
+                const techDetailsItems = Array.isArray(project.techDetails) ? project.techDetails : project.techDetails.split('。').filter(item => item.trim() !== '');
+                techDetailsItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    techDetailsList.appendChild(li);
+                });
+            }
+
+            // 成果展示
+            const resultsList = document.getElementById('projectResults');
+            if (project.results) {
+                const resultsItems = Array.isArray(project.results) ? project.results : project.results.split('。').filter(item => item.trim() !== '');
+                resultsItems.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = item.trim();
+                    resultsList.appendChild(li);
+                });
+            }
+
+            
+            // 填充技術列表
+            const techList = document.getElementById('techList');
+            project.tech.forEach(tech => {
+                const li = document.createElement('li');
+                li.className = 'tech-item';
+                li.textContent = tech;
+                techList.appendChild(li);
+            });
+            
+            // 設置預覽連結
+            const previewLink = document.getElementById('previewLink');
+            if (project.title === '二手時尚集點APP使用者介面') {
+                previewLink.href = 'https://0kaiiix.github.io/greenpoint.github.io/';
+            } else if (project.title === '融合達悟族圖騰與自然花朵的印花設計') {
+                previewLink.href = 'https://www.pacdora.cn/share?filter_url=ps964oqdqt';
+            } else if (project.title === '虛擬口紅試妝系統') {
+                previewLink.href = 'https://0kaiiix-mk.streamlit.app/';
+            } else if (project.title === '法規知識簡易問答系統') {
+                previewLink.href = 'https://ai-traffic.streamlit.app/';
+            } else if (project.title === '圖像處理系統') {
+                previewLink.href = 'https://picture1.streamlit.app/';
+            } else if (project.title === 'HR Trend: Retention of Talent（人才留任趨勢）') {
+                previewLink.href = 'PS.png';
+            } else if (project.title === 'AI Gemini語音助手') {
+                previewLink.href = 'https://ai-gemma3.streamlit.app/';
+            } else if (project.title === 'AI GPT對話助手') {
+                previewLink.href = 'https://ai-gpt.streamlit.app/';
+            } else if (project.title === '人臉網格檢測應用') {
+                previewLink.href = 'https://face-1.streamlit.app/';
+            } else if (project.title === '人力資源分析報告') {
+                previewLink.href = 'https://www.canva.com/design/DAGzfVQTqoA/kvY3QPxO_AA9IEUgVJfksg/edit?utm_content=DAGzfVQTqoA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton';
+            } else if (project.title === '正大聯合會計師事務所實習生招募社群宣傳') {
+                previewLink.href = 'https://www.dcard.tw/f/intern/p/259479182?cid=9dfa9f7e-5a11-4419-8163-19acccd58b1f';
+            } else if (project.title === '正大聯合會計師事務所海報宣傳') {
+                previewLink.href = 'ps1.png';
+            } else if (project.title === '2024年妝品市場評估報告') {
+                previewLink.href = 'https://1drv.ms/w/s!ApHgNwz-EVSlsBM6OZXn_v-LtXFX?e=RzCPVp';
+            }
+
+            // 添加專案連結
+            const projectLinks = document.getElementById('projectLinks');
+            if (project.link) {
+                const demoLink = document.createElement('a');
+                demoLink.href = project.link;
+                demoLink.className = 'project-link';
+                demoLink.target = '_blank';
+                demoLink.innerHTML = '<i class="fas fa-external-link-alt"></i> 預覽界面';
+                projectLinks.appendChild(demoLink);
+                
+                // 阻止圖片點擊時觸發超連結
+                projectImage.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const isPdf = projectImage.src.toLowerCase().endsWith('.pdf');
+                    modalImage.style.display = !isPdf ? 'block' : 'none';
+                    modalPdf.style.display = isPdf ? 'block' : 'none';
+                    
+                    if (!isPdf) {
+                        modalImage.src = projectImage.src;
+                    } else {
+                        modalPdf.src = projectImage.src;
+                    }
+                    
+                    imageModal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+        } else {
+            window.location.href = 'index.html';
+        }
+    </script>
+  <!-- 頁尾區塊 - 包含版權資訊 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 kaiiix作品集. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript 引入 -->
+  <script src="script.js"></script>
+</body>
+</html>

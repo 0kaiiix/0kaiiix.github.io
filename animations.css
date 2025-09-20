@@ -1,0 +1,350 @@
+/* animations.css - 網站動畫效果 */
+
+/* 全局動畫變量 */
+:root {
+    --animation-duration: 0.8s;
+    --animation-timing: cubic-bezier(0.25, 0.1, 0.25, 1);
+    --cursor-size: 20px;
+    --cursor-trail-size: 8px;
+    --cursor-color: rgba(var(--color-accent-rgb), 0.6);
+    --cursor-trail-color: rgba(var(--color-accent-rgb), 0.3);
+}
+
+/* 1. 首頁載入動畫 + 名字淡入 */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn var(--animation-duration) var(--animation-timing) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero__title {
+    opacity: 0;
+    animation: titleFadeIn 1.2s ease-out 0.3s forwards;
+}
+
+@keyframes titleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero__subtitle {
+    opacity: 0;
+    animation: subtitleFadeIn 1.2s ease-out 0.8s forwards;
+}
+
+@keyframes subtitleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. 技能數值動畫 */
+.progress-bar.animate {
+    animation: progressFill 1.5s ease-out forwards;
+}
+
+@keyframes progressFill {
+    from { width: 0; }
+    to { width: var(--percent); }
+}
+
+/* 技能百分比動畫已移除 */
+
+/* 3. 作品輪播與懸停互動 */
+.project-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.project-info {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(var(--color-accent-rgb), 0.9);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    padding: 1rem;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 輪播動畫 */
+.slide {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: scale(0.95);
+}
+
+.slide.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.carousel-btn {
+    transform: translateY(-50%) scale(0.9);
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    transform: translateY(-50%) scale(1);
+}
+
+.dot {
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+    transform: scale(1.2);
+}
+
+/* 4. 互動時間軸（關於我的經歷區） */
+.timeline-item {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-item.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.timeline-dot {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.3);
+    background-color: var(--color-primary);
+}
+
+/* 5. 回到頂部＋平滑滾動 */
+.back-to-top {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 3px 8px var(--shadow-color);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 15px var(--shadow-color);
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 3px 8px var(--shadow-color);
+    }
+}
+
+/* 6. 背景動態微動畫 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    opacity: 0.1;
+    animation: float 15s infinite linear;
+}
+
+/* 7. 鼠標特效 - 人力資源主題 */
+.cursor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.cursor-dot {
+    position: absolute;
+    width: var(--cursor-size);
+    height: var(--cursor-size);
+    border-radius: 50%;
+    background-color: var(--cursor-color);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    mix-blend-mode: multiply;
+}
+
+.cursor-dot::before {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    opacity: 0.7;
+}
+
+.cursor-trail {
+    position: absolute;
+    width: var(--cursor-trail-size);
+    height: var(--cursor-trail-size);
+    border-radius: 50%;
+    background-color: var(--cursor-trail-color);
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, opacity 0.5s;
+    z-index: 9999;
+    opacity: 0.7;
+    mix-blend-mode: multiply;
+}
+
+/* 鼠標懸停在可點擊元素上的效果 */
+.cursor-dot.hover {
+    width: calc(var(--cursor-size) * 1.5);
+    height: calc(var(--cursor-size) * 1.5);
+    background-color: rgba(var(--color-accent-rgb), 0.3);
+    mix-blend-mode: screen;
+}
+
+/* 鼠標點擊效果 */
+.cursor-dot.clicked {
+    animation: cursorClick 0.5s forwards;
+}
+
+@keyframes cursorClick {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* 人力資源圖標效果 */
+.cursor-icon {
+    position: absolute;
+    font-size: 12px;
+    color: var(--color-text);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 10001;
+    pointer-events: none;
+}
+
+.cursor-icon.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-30px) translateX(10px) rotate(90deg);
+    }
+    50% {
+        transform: translateY(-10px) translateX(30px) rotate(180deg);
+    }
+    75% {
+        transform: translateY(30px) translateX(10px) rotate(270deg);
+    }
+    100% {
+        transform: translateY(0) translateX(0) rotate(360deg);
+    }
+}
+
+/* 平滑滾動 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 頁面轉場動畫 */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-primary);
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.page-transition.active {
+    transform: translateY(0);
+}
+
+.page-transition.exit {
+    transform: translateY(-100%);
+}
